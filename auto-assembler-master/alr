@@ -1,0 +1,72 @@
+#!/bin/bash
+# ******************* Please READ README.md for imp. stuff  *******************
+#================== introduction ======================
+# Coder : mahakal
+# date :  Nov,2016
+# This is a simple bash script file used to automate the task of Assembling,Linking 
+# and Running of an assembly source program
+# assembler used is  => yasm
+# basically follwing task is performed
+# steps: 
+#       yasm -f elf64 -g dwarf2 -l file.lst file.asm
+#       ld -o file file.o
+#       ./file
+#    
+# 
+#================================================================
+
+if [ $# -ne 1 ]           # if no file  specified
+then
+	echo "USAGE:<$0> <source_file>"
+	exit 1
+fi
+
+# following types are used to facilitate symbolic links
+
+alrType=~/bashsc/alr  #alr ~ giving path to script
+anlType=~/bashsc/anl  #anl ~ giving path to script
+
+# an error chekcing function : This function checks if the previous command
+# has been successfully taken place or not 
+function error_check
+{       
+	if [ $? -eq 0 ]    # is recent status successful ?
+	then
+		return
+	else               #recent status was failure
+		echo "terminating the script"
+		exit 1     # exit on failure
+	fi
+}
+
+file=`echo $1 | cut -f 1 -d '.'`    #remove the extension of given file
+
+# if you want Assemble,Link,Run
+
+if [ $0 = $alrType ]
+then
+	echo "assembling..... "
+        yasm -f elf64 -g dwarf2 -l $file.lst $file.asm
+	error_check
+	echo "linking.... the object file "
+	ld -o $file $file.o
+	error_check
+	echo "========================= EXECUTING ======================="
+	./$file
+	error_check
+fi
+
+# if you want "assemble , Listing ",then make symbolic link of this file with name 
+# anl : short for -> assemble and show listing file
+
+if [ $0 = $anlType ]
+then
+	echo "Asssembling......."
+	yasm -f elf64 -g dwarf2 -l $file.lst $file.asm
+	error_check
+	echo "Calling vim to open the list file> "
+	vim $file.lst
+	error_check
+fi
+
+exit 0     # successful exit
