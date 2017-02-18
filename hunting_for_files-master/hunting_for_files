@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# the comments starting with extra # are special and you can uncomment them to see what the 
+# the script is doing ......... for debugging purpose 
+# ==========  the function dive is called recursively and cat files if found =================
+function dive
+{  
+	for  j in *                            # iterate all file/dirs in current listing
+	do
+		## echo "checking for file or dir having PathToFile=`pwd`/$j" 
+		if [ -f $PathToFile/$j ]       # checking if not directory
+		then    
+			echo " "
+			echo "''''''''''''''''''''''''''''''''''''''''''''''''''''''"
+			echo "*=*=*=*=*=*=*=* cat'ing `pwd`/$j  *=*=*=*=*=*=*=*=*=**"
+			echo "''''''''''''''''''''''''''''''''''''''''''''''''''''''"
+			echo " "
+			cat $PathToFile/$j
+		elif [ -d $PathToFile/$j ]      # if it is a directory?  
+		then                            # it is !
+			cd $PathToFile/$j       # change directory 
+			##echo "=======calling dive with  $PathToFile/$j ==========="
+			dive                    # function dive to dive into directory
+			cd ..                   # resuming with previous directory
+		fi
+	done
+} # dive
+
+for i in *                         # iterating all file/dir in parent listing
+do
+	PathToFile=`pwd`/$i        # choosing file to process
+	##echo " going to manipulate PathToFile=$PathToFile " 
+	if [ -f  $PathToFile ]
+	then 
+		echo " "
+	        echo "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"
+		echo "*=*=*=*=*=*=*= cat'ing  $PathToFile *=*=*=*=*=*=*=*=*=*=*=*=*=*"
+		echo "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"
+		echo " " 
+
+	        ##echo "pwd=`pwd`"
+		cat $PathToFile
+	else
+               ## echo "=========tearing out directory  $PathToFile ===="
+		cd $PathToFile
+                dive
+		cd ..                              #restoring our root directory
+	fi
+done
+
