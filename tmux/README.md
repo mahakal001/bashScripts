@@ -1,4 +1,5 @@
-
+#WARNING : This README.md file gives different look on github.Please use vim to read this.The ascii art 
+           is also disturbed in the online view.So use Vim
 # Subject : A Simple Tmux script 
 # Coder   : Mohit Kumar
 # Contact : mkal001@cyberdude.com
