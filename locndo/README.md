@@ -7,6 +7,7 @@ BUT
 BUT
 this extremely simple script shortens the task :
 use it as 
- $ locndo < string_you_are_searching_for >
+
+## $ locndo.sh < string_you_are_searching_for >    ##
 
 
