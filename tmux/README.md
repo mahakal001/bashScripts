@@ -2,7 +2,6 @@
            is also disturbed in the online view.So use Vim or the raw file 
 # Subject : A Simple Tmux script 
 # Coder   : Mohit Pilkhan
-# Contact : mkal001@cyberdude.com
 # Successfully tested on : Ubuntu 14.04 x-86-64 bit
 
 # Tmux ? :
