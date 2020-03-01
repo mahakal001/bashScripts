@@ -59,6 +59,9 @@
 	                   |_|_|
 
             Isn't the above ascii art simple and sexy ? I really enjoyed building them.
+            ( Due to some formatting issues the above ascii designs looks in their desired format
+            only in raw file. )
+            
 # Future: 
         Its been a while with tmux.As my experince will grow i will enhance
 	the efficiency,securtiy,features of this script.
