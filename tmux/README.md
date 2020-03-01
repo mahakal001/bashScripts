@@ -1,7 +1,7 @@
 #WARNING : This README.md file gives different look on github.Please use vim to read this.The ascii art 
            is also disturbed in the online view.So use Vim or the raw file 
 # Subject : A Simple Tmux script 
-# Coder   : Mohit Kumar
+# Coder   : Mohit Pilkhan
 # Contact : mkal001@cyberdude.com
 # Successfully tested on : Ubuntu 14.04 x-86-64 bit
 
@@ -68,7 +68,7 @@
 # Versioning:
            We use Git as version control system
 # Authors:
-         Mohit Kumar
+         Mohit Pilkhan
 #Acknowledgments:
                 * To OPEN source community,Books and their Authors.
                 * manual page of tmux
